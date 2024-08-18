@@ -1,0 +1,418 @@
+/* General Dark Theme Styles */
+body {
+    background-color: #1a1a1a;
+    color: #ddd;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Modern List Header */
+.list-header {
+    background-color: #333;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Center items vertically */
+}
+
+.header-left {
+    display: flex;
+    align-items: center; /* Center align vertically */
+}
+
+.user-image {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+    border: 2px solid #444;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-info h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #ffa500; /* Orange Accent Color */
+}
+
+.user-nav {
+    display: flex;
+    gap: 15px; /* Space between menu items */
+    margin-top: 10px; /* Space between title and menu */
+}
+
+.user-nav a {
+    color: #bbb;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.user-nav a.active {
+    color: #ffa500; /* Orange Accent Color */
+    border-bottom: 2px solid #ffa500;
+    padding-bottom: 2px;
+}
+
+.user-nav a:hover {
+    color: #ffa500;
+}
+
+/* Login/Sign Up Button */
+.login-section {
+    display: flex;
+    justify-content: center; /* Center the button horizontally */
+    align-items: center; /* Center the button vertically */
+}
+
+.login-button {
+    background-color: #444;
+    color: #fff;
+    padding: 10px 20px; /* Adjusted padding */
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #777;
+}
+
+/* Horizontal Navigation Bar */
+.category-nav {
+    background-color: #333;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.category-nav a {
+    color: #bbb;
+    text-decoration: none;
+    font-size: 18px;
+    margin: 0 15px;
+    padding: 5px 10px;
+    transition: color 0.3s, border-bottom 0.3s;
+}
+
+.category-nav a.active, .category-nav a:hover {
+    color: #ffa500; /* Orange Accent Color */
+    border-bottom: 2px solid #ffa500;
+}
+
+/* Main Content Section */
+.list-content {
+    padding: 20px 0; /* Removed left padding */
+    margin-left: 0; /* Removed left margin */
+}
+
+.list-content h3 {
+    margin-top: 0;
+    color: #ffa500; /* Orange Accent Color */
+    font-size: 28px;
+    margin-bottom: 20px;
+    padding-left: 20px; /* Added left padding only for title */
+}
+
+.list-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px; /* Smaller gap between blocks */
+    padding-left: 20px; /* Added padding to align the grid */
+}
+
+/* Smaller Modern Card Design */
+.list-item {
+    background-color: #444;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 100%;
+    max-width: 200px; /* Smaller width */
+}
+
+.list-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+.list-item img {
+    width: 100%;
+    height: 200px; /* Fixed height to make the image square */
+    object-fit: cover;
+    border-bottom: 1px solid #555;
+}
+
+.item-info {
+    padding: 10px;
+    color: #ddd;
+}
+
+.item-info h4 {
+    margin: 0 0 5px 0;
+    font-size: 16px; /* Smaller font size */
+    color: #ffa500; /* Orange Accent Color */
+}
+
+.item-info p {
+    margin: 5px 0 0 0;
+    font-size: 12px;
+    color: #bbb;
+}
+
+/* Login Form */
+.login-form {
+    max-width: 350px; /* Smaller form width */
+    margin: 50px auto;
+    background-color: #333;
+    padding: 20px; /* Adjusted padding */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Center align content */
+}
+
+.login-form h2 {
+    margin-bottom: 20px;
+    color: #ffa500;
+    text-align: center;
+}
+
+.login-form input {
+    width: 95%;
+    padding: 8px; /* Smaller input padding */
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #555;
+    background-color: #222;
+    color: #ddd;
+    font-size: 14px; /* Adjusted font size */
+    text-align: center;
+}
+
+.login-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #ffa500;
+    color: #1a1a1a;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-form button:hover {
+    background-color: #ffb732;
+}
+
+.login-form p {
+    margin-top: 20px;
+    color: #bbb;
+    text-align: center;
+}
+
+.login-form a {
+    color: #ffa500;
+    text-decoration: none;
+}
+
+.login-form a:hover {
+    text-decoration: underline;
+}
+
+/* Back Button */
+.back-button {
+    margin-top: 20px;
+}
+
+.back-link {
+    color: #ffa500;
+    text-decoration: none;
+    font-size: 16px;
+    display: inline-block;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* Login Prompt when not logged in */
+.login-prompt {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.login-prompt h3 {
+    color: #ffa500;
+    margin-bottom: 20px;
+}
+
+.login-prompt .login-button {
+    padding: 10px 20px;
+    font-size: 18px;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.7); /* Black with opacity */
+    animation: fadeIn 0.5s;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #333;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    animation: slideIn 0.5s;
+    color: #fff;
+    text-align: center;
+}
+
+/* Add Animation */
+@keyframes slideIn {
+    from {margin-top: -300px; opacity: 0;}
+    to {margin-top: 10%; opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/* Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Modal Image */
+.modal-content img {
+    width: 100%;
+    max-width: 200px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Modal input */
+.modal-content input[type="number"] {
+    width: 60px;
+    padding: 5px;
+    margin-top: 10px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.modal-content button {
+    background-color: #ffa500;
+    color: #1a1a1a;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.modal-content button:hover {
+    background-color: #ffb732;
+}
+
+.thank-you-modal {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: #fff;
+    animation: fadeIn 0.5s, fadeOut 0.5s 1.5s; /* Fade in and out */
+}
+
+.thank-you-modal h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #ffa500;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.search-bar input[type="text"] {
+    padding: 8px;
+    width: 300px;
+    border-radius: 5px 0 0 5px;
+    border: 1px solid #444;
+    background-color: #222;
+    color: #ddd;
+}
+
+.search-bar button {
+    padding: 8px 16px;
+    border-radius: 0 5px 5px 0;
+    border: 1px solid #444;
+    background-color: #ffa500;
+    color: #1a1a1a;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #ffb732;
+}
+
+#deleteScore {
+    background-color: #ff4d4d; /* Red color for delete button */
+    color: white;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    display: inline-block;
+}
+
+#deleteScore:hover {
+    background-color: #ff1a1a; /* Darker red on hover */
+}

@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}My Music Reviews{% endblock %}
+
+{% block content %}
+    {% if session.get('logged_in') %}
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <form method="GET" action="{{ url_for('index') }}">
+                <input type="text" name="search_query" placeholder="Search for a song..." value="{{ request.args.get('search_query', '') }}">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
+        <!-- Horizontal Navigation Bar -->
+        <div class="category-nav">
+            <a href="#" class="active">All Music</a>
+            <a href="#">Albums</a>
+            <a href="#">Songs</a>
+            <a href="#">Artists</a>
+            <a href="#">Genres</a>
+        </div>
+
+        <!-- Reviewed Music Section -->
+        <div class="list-content">
+            <h3>Reviewed Music</h3>
+            <div class="list-grid">
+                {% for song in reviewed_songs %}
+                <div class="list-item" 
+                    data-title="{{ song['Title'] }}" 
+                    data-artist="{{ song['Artist'] }}" 
+                    data-score="{{ song['Score'] }}" 
+                    data-image="{{ url_for('static', filename='images/songs/' + song['Image']) }}" 
+                    onclick="openModal(this)">
+                    <img src="{{ url_for('static', filename='images/songs/' + song['Image']) }}" alt="{{ song['Title'] }}">
+                    <div class="item-info">
+                        <h4>{{ song['Title'] }}</h4>
+                        <p>Artist: {{ song['Artist'] }}</p>
+                        <p>Score: {{ song['Score'] }}/10</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Unreviewed Music Section -->
+        <div class="list-content">
+            <h3>Unreviewed Music</h3>
+            <div class="list-grid">
+                {% for song in unreviewed_songs %}
+                <div class="list-item" 
+                    data-title="{{ song['Title'] }}" 
+                    data-artist="{{ song['Artist'] }}" 
+                    data-score="0" 
+                    data-image="{{ url_for('static', filename='images/songs/' + song['Image']) }}" 
+                    onclick="openModal(this)">
+                    <img src="{{ url_for('static', filename='images/songs/' + song['Image']) }}" alt="{{ song['Title'] }}">
+                    <div class="item-info">
+                        <h4>{{ song['Title'] }}</h4>
+                        <p>Artist: {{ song['Artist'] }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Modal Structure -->
+        <div id="songModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <img id="modalImage" src="" alt="Album Art">
+                <h2 id="modalTitle"></h2>
+                <p id="modalArtist"></p>
+                <label for="modalScore">Score:</label>
+                <input id="modalScore" type="number" min="0" max="10">
+                <button onclick="saveScore()">Save</button>
+                <button id="deleteScore" style="display: none;" onclick="deleteScore()">Delete</button>
+            </div>
+        </div>
+
+        <div id="thankYouModal" class="modal thank-you-modal">
+            <div class="modal-content">
+                <h2>Thank you for rating!</h2>
+            </div>
+        </div>
+    {% else %}
+        <div class="login-prompt">
+            <h3>Log in to see your Music List</h3>
+            <a href="{{ url_for('login') }}" class="login-button">Login</a>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Main Header Banner -->
+    <div class="list-header">
+        <div class="header-left">
+            {% if session.get('logged_in') %}
+                <img src="{{ url_for('static', filename='images/user_image.jpg') }}" alt="User Image" class="user-image">
+            {% else %}
+                <img src="{{ url_for('static', filename='images/anonymous_user.jpeg') }}" alt="Anonymous User" class="user-image">
+            {% endif %}
+            <div class="user-info">
+                {% if session.get('logged_in') %}
+                    <h2>Xernnn's Music Reviews</h2>
+                {% else %}
+                    <h2>My Music Review</h2>
+                {% endif %}
+                <div class="user-nav">
+                    <a href="#">Overview</a>
+                    <a href="#" class="active">Music Reviews</a>
+                    <a href="#">Favorites</a>
+                    <a href="#">Stats</a>
+                    <!-- Removed Social and Submissions -->
+                </div>
+            </div>
+        </div>
+        <div class="login-section">
+            {% if session.get('logged_in') %}
+                <a href="{{ url_for('logout') }}" class="login-button">Logout</a>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="login-button">Login / Sign Up</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        {% block content %}{% endblock %}
+    </div>
+
+    {% block scripts %}
+    <!-- Additional scripts can be added here -->
+    {% endblock %}
+</body>
+</html>
