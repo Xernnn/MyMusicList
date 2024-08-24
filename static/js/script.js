@@ -6,8 +6,11 @@ function openModal(element) {
 
     document.getElementById('modalTitle').textContent = title;
     document.getElementById('modalArtist').textContent = 'Artist: ' + artist;
-    document.getElementById('modalScore').value = score;
     document.getElementById('modalImage').src = image;
+
+    // Set the selected option in the dropdown
+    const scoreDropdown = document.getElementById('modalScore');
+    scoreDropdown.value = score;
 
     // Show or hide the delete button based on whether the song is reviewed
     if (score > 0) {
@@ -18,6 +21,7 @@ function openModal(element) {
 
     document.getElementById('songModal').style.display = 'block';
 }
+
 
 function closeModal() {
     document.getElementById('songModal').style.display = 'none';

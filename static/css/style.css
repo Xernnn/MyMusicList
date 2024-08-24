@@ -416,3 +416,14 @@ body {
 #deleteScore:hover {
     background-color: #ff1a1a; /* Darker red on hover */
 }
+
+#modalScore {
+    width: 40%;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background-color: #222;
+    color: #ddd;
+}
