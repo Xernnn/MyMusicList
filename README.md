@@ -34,8 +34,8 @@ Welcome to **My Music Review App**! This project is a simple yet powerful web ap
 ### Running the App
 1. Clone the repo:
 ```
-git clone https://github.com/yourusername/music-review-app.git
-cd music-review-app
+git clone https://github.com/Xernnn/MyMusicList.git
+cd MyMusicList
 ```
 2. Run the app:
 ```
