@@ -20,8 +20,8 @@
                 <img src="{{ url_for('static', filename='images/anonymous_user.jpeg') }}" alt="Anonymous User" class="user-image">
             {% endif %}
             <div class="user-info">
-                {% if session.get('logged_in') and session.get('username') == 'admin' %}
-                    <h2>Xernnn's Music Reviews</h2>
+                {% if session.get('logged_in') %}
+                    <h2>{{ session.get('username') }}'s Music Reviews</h2>
                 {% else %}
                     <h2>My Music Review</h2>
                 {% endif %}
