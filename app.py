@@ -50,7 +50,7 @@ def index():
     df = pd.read_excel('./static/data/data.xlsx')
     songs = df.to_dict(orient='records')
 
-    search_query = request.args.get('search_query', '')
+    search_query = request.args.get('search_query', '').lower()
 
     conn = sqlite3.connect('users.db')
     cursor = conn.cursor()
@@ -77,6 +77,12 @@ def index():
             unreviewed_songs.append(song)
 
     conn.close()
+
+    # Apply search filter
+    if search_query:
+        reviewed_songs = [song for song in reviewed_songs if search_query in song['Title'].lower()]
+        unreviewed_songs = [song for song in unreviewed_songs if search_query in song['Title'].lower()]
+
     return render_template('index.html', reviewed_songs=reviewed_songs, unreviewed_songs=unreviewed_songs)
 
 @app.route('/login', methods=['GET', 'POST'])
