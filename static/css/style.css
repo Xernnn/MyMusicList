@@ -427,3 +427,19 @@ body {
     background-color: #222;
     color: #ddd;
 }
+
+.stats-container {
+    padding: 20px;
+    color: #ddd;
+}
+
+.chart {
+    margin-bottom: 40px;
+}
+
+.chart img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}

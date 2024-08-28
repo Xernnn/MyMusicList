@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="stats-container" style="text-align: center;"> <!-- Center-align the content -->
+    <div class="chart">
+        <img src="data:image/png;base64,{{ bar_chart }}" alt="Bar Chart" style="margin: auto;">
+    </div>
+</div>
+{% endblock %}

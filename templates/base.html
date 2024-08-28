@@ -27,9 +27,9 @@
                 {% endif %}
                 <div class="user-nav">
                     <a href="#">Overview</a>
-                    <a href="#" class="active">Music Reviews</a>
-                    <a href="#">Favorites</a>
-                    <a href="#">Stats</a>
+                    <a href="{{ url_for('index') }}" class="{{ 'active' if request.endpoint == 'index' else '' }}">Music Reviews</a>
+                    <a href="{{ url_for('favorites') }}" class="{{ 'active' if request.endpoint == 'favorites' else '' }}">Favorites</a>
+                    <a href="{{ url_for('stats') }}" class="{{ 'active' if request.endpoint == 'stats' else '' }}">Stats</a>
                 </div>
             </div>
         </div>

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}My Favorite Songs{% endblock %}
+
+{% block content %}
+    <div class="list-content">
+        <h3>Favorite Songs</h3>
+        <div class="list-grid">
+            {% for song in favorite_songs %}
+            <div class="list-item" 
+                data-title="{{ song['Title'] }}" 
+                data-artist="{{ song['Artist'] }}" 
+                data-score="{{ song['Score'] }}" 
+                data-image="{{ url_for('static', filename='images/songs/' + song['Image']) }}" 
+                onclick="openModal(this)">
+                <img src="{{ url_for('static', filename='images/songs/' + song['Image']) }}" alt="{{ song['Title'] }}">
+                <div class="item-info">
+                    <h4>{{ song['Title'] }}</h4>
+                    <p>Artist: {{ song['Artist'] }}</p>
+                    <p>Score: {{ song['Score'] }}/10</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- The existing modal structure will be reused -->
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+{% endblock %}
