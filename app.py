@@ -6,6 +6,7 @@ matplotlib.use('Agg')  # Use the Agg backend for rendering to a file
 import matplotlib.pyplot as plt
 import io
 import base64
+import numpy as np
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key_here'
@@ -224,7 +225,7 @@ def create_bar_chart(score_distribution):
     max_reviews = max(score_distribution)  # Find the maximum number of reviews
     y_max = max_reviews + 1  # Set the y-axis limit to max reviews + 1
     
-    plt.figure(figsize=(10, 6))
+    plt.figure(figsize=(12, 6))
     bars = plt.bar(labels, score_distribution, color='#ffa500', edgecolor='white')  # Bars with white outline
     plt.xlabel('Score', color='white')
     plt.ylabel('Number of Reviews', color='white')
@@ -264,6 +265,62 @@ def convert_plot_to_image():
     plt.close()
     # Encode image to base64 string
     return base64.b64encode(img.getvalue()).decode()
+
+@app.route('/overview')
+def overview():
+    if 'logged_in' not in session or 'user_id' not in session:
+        return redirect(url_for('login'))
+
+    user_id = session['user_id']
+
+    # Fetch the song data
+    df = pd.read_excel('./static/data/data.xlsx')
+    total_songs = len(df)
+
+    conn = sqlite3.connect('users.db')
+    cursor = conn.cursor()
+
+    # Fetch the number of reviewed songs
+    cursor.execute('SELECT COUNT(*) FROM reviews WHERE user_id = ?', (user_id,))
+    reviewed_songs_count = cursor.fetchone()[0]
+    conn.close()
+
+    # Prepare the pie chart
+    pie_chart = create_pie_chart(reviewed_songs_count, total_songs)
+
+    return render_template('overview.html', reviewed_songs_count=reviewed_songs_count, pie_chart=pie_chart)
+
+def create_pie_chart(reviewed_songs_count, total_songs):
+    labels = ['Reviewed', 'Unreviewed']
+    sizes = [reviewed_songs_count, total_songs - reviewed_songs_count]
+    colors = ['#ffa500', '#444']
+
+    plt.figure(figsize=(6, 6))
+    wedges, texts, autotexts = plt.pie(
+        sizes,
+        colors=colors,
+        autopct='%1.1f%%',
+        startangle=140,
+        textprops=dict(color="white", fontsize=16, weight='bold'),
+        wedgeprops=dict(edgecolor='white')
+    )
+
+    # Adjust position of the percentages to be inside the slices
+    for i, autotext in enumerate(autotexts):
+        autotext.set_fontsize(20)
+        autotext.set_weight('bold')
+        autotext.set_color('white')
+        # Calculate the position manually
+        ang = (wedges[i].theta2 - wedges[i].theta1)/2. + wedges[i].theta1
+        x = np.cos(np.radians(ang)) * 0.6
+        y = np.sin(np.radians(ang)) * 0.6
+        autotext.set_position((x, y))  # Set the position closer to the center of the wedge
+
+    plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+    plt.gca().patch.set_alpha(0)  # Set the background of the plot to be transparent
+    plt.gcf().set_facecolor('none')  # Set the figure background to be transparent
+
+    return convert_plot_to_image()
 
 if __name__ == '__main__':
     app.run(debug=True)

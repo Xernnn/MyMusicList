@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="overview-container">
+    <div class="overview-content">
+        <!-- Display the big number of reviewed songs -->
+        <div class="reviewed-songs-count">
+            <div class="count-number">{{ reviewed_songs_count }}</div>
+            <div class="count-label">Reviewed Songs</div>
+        </div>
+
+        <!-- Display the pie chart -->
+        <div class="pie-chart">
+            <img src="data:image/png;base64,{{ pie_chart }}" alt="Pie Chart">
+        </div>
+    </div>
+</div>
+{% endblock %}

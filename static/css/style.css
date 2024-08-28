@@ -443,3 +443,58 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
+
+.overview-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background-color: #1a1a1a; /* Dark background */
+    color: #fff;
+}
+
+.overview-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    max-width: 1200px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #2b2b2b; /* Slightly lighter background for content */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add a soft shadow */
+}
+
+.reviewed-songs-count {
+    flex: 1;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    padding: 20px;
+}
+
+.count-number {
+    font-size: 5em;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #ffa500; /* Orange accent color */
+}
+
+.count-label {
+    font-size: 1.5em;
+    font-weight: 300;
+    color: #ddd;
+}
+
+.pie-chart {
+    flex: 1;
+    text-align: center;
+}
+
+.pie-chart img {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Add a soft shadow to the chart */
+}
+
