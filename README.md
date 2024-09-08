@@ -23,11 +23,15 @@ pip install -r requirements.txt
 git clone https://github.com/Xernnn/MyMusicList.git
 cd MyMusicList
 ```
-2. Run the app:
+2. Install dependencies with:
+```
+pip install -r requirements.txt
+```
+3. Run the app:
 ```
 python app.py
 ```
-3. Access it in your browser:
+4. Access it in your browser:
 ```
 http://127.0.0.1:5000/
 ```
